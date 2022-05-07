@@ -12,9 +12,43 @@
 <body>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-    <div>
+    <div x-data="{ mediumTotalPrice:0.00,med:0,largeTotalPrice:0.00,lag:0,smallTotalPrice:0.00,sml:0,totalPrice:0.00 }">
         <div>
             <h1>Perfect Pizza</h1>
+        </div>
+        <div class="cartTotal ">
+            <strong>Total price</strong>
+            <span x-text="cartTotalPrice" class="cartTotalPrice">0.00</span>
+            <a href="#">
+                <img src="shopping-cart.png" alt="">
+            </a>
+        </div>
+
+
+        <div class="cart">
+            <h3>Shopping Cart</h3>
+            <img src="shopping-cart.png" alt="">
+
+            <table>
+                <tr>
+                    <td><strong>Small pizzas total:</strong></td>
+                    <td><span x-text="smallTotalPrice" class="smallTotalPrice">0.00</span></td>
+                </tr>
+
+                <tr>
+                    <td><strong>Medium pizzas total:</strong></td>
+                    <td><span x-text="mediumTotalPrice" class="mediumTotalPrice">0.00</span></td>
+
+                </tr>
+                <tr>
+                    <td><strong>Large pizza total:</strong></td>
+                    <td><span x-text="largeTotalPrice" class="largeTotalPrice">0.00</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Total price</strong></td>
+                    <td><span x-text="totalPrice" class="totalPrice">0.00</span></td>
+                </tr>
+            </table>
         </div>
         <div class="specials">
             <div class="medium">
@@ -26,16 +60,13 @@
             2 or less meat topping.
             3 or less other toppings.
           </i>
-                <div x-data="{ count: 0 } ">
-                    <h2 x-text="count">
+                <div>
+                    <h2 x-text="med">
                     </h2>
-                    <button @click="count++ ">+</button>
-                    <button @click="count-- ">-</button>
+                    <button @click="med++,mediumTotalPrice+=78.99">+</button>
+                    <button @click="med--,mediumTotalPrice-=78.99">-</button>
                 </div>
-                <div x-data="{ title: '' } ">
-                    <p x-text="title"></p>
-                    <button @click="title='Your Order has been added!' ">Order</button>
-                </div>
+
             </div>
             <div class="large">
                 <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" alt="">
@@ -46,17 +77,17 @@
             3 meat toppings max.
             3 or less other toppings.
           </i>
-                <div x-data="{ count: 0 } ">
-                    <h2 x-text="count">
+                <div>
+                    <h2 x-text="lag">
                     </h2>
-                    <button @click="count++ ">+</button>
-                    <button @click="count-- ">-</button>
+                    <button @click="lag++,largeTotalPrice+=114.99">+</button>
+                    <button @click="lag--,largeTotalPrice-=114.99">-</button>
 
                 </div>
-                <div x-data="{ title: '' } ">
+                <!-- <div>
                     <p x-text="title"></p>
                     <button @click="title='Your Order has been added!' ">Order</button>
-                </div>
+                </div> -->
             </div>
             <div class="small">
                 <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" alt="">
@@ -69,18 +100,19 @@
               <li>3 or less other toppings.</li>
             </ul>
           </i>
-                <div x-data="{ count: 0 } ">
-                    <h2 x-text="count">
+                <div>
+                    <h2 x-text="sml">
                     </h2>
-                    <button @click="count++ ">+</button>
-                    <button @click="count-- ">-</button>
+                    <button @click="sml++,smallTotalPrice+=48.99">+</button>
+                    <button @click="sml--,smallTotalPrice-=48.99">-</button>
                 </div>
-                <div x-data="{ title: '' } ">
+                <!-- <div>
                     <p x-text="title"></p>
                     <button @click="title='Your Order has been added!' ">Order</button>
-                </div>
+                </div> -->
             </div>
         </div>
+
         <div class="footer">
             <div class="contact">
                 <strong>Contact us at:</strong> (021)-541-1000
