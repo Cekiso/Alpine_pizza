@@ -63,8 +63,8 @@
                 <div>
                     <h2 x-text="med">
                     </h2>
-                    <button @click="med++,mediumTotalPrice+=78.99">+</button>
-                    <button @click="med--,mediumTotalPrice-=78.99">-</button>
+                    <button @click="med++,mediumTotalPrice+=78.99,totalPrice+=78.99">+</button>
+                    <button @click="med--,mediumTotalPrice-=78.99,totalPrice-=78.99">-</button>
                 </div>
 
             </div>
@@ -80,8 +80,8 @@
                 <div>
                     <h2 x-text="lag">
                     </h2>
-                    <button @click="lag++,largeTotalPrice+=114.99">+</button>
-                    <button @click="lag--,largeTotalPrice-=114.99">-</button>
+                    <button @click="lag++,largeTotalPrice+=114.99,totalPrice+=114.99">+</button>
+                    <button @click="lag--,largeTotalPrice-=114.99,totalPrice-=114.99">-</button>
 
                 </div>
                 <!-- <div>
@@ -103,8 +103,8 @@
                 <div>
                     <h2 x-text="sml">
                     </h2>
-                    <button @click="sml++,smallTotalPrice+=48.99">+</button>
-                    <button @click="sml--,smallTotalPrice-=48.99">-</button>
+                    <button @click="sml++,smallTotalPrice+=48.99,totalPrice+=48.99">+</button>
+                    <button @click="sml--,smallTotalPrice-=48.99,totalPrice-=48.99">-</button>
                 </div>
                 <!-- <div>
                     <p x-text="title"></p>
