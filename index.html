@@ -12,13 +12,13 @@
 <body>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-    <div x-data="{mediumTotalPrice:0.00,med:0,largeTotalPrice:0.00,lag:0,smallTotalPrice:0.00,sml:0,totalPrice:0.00,cartTotalPrice:0.00}">
+    <div x-data="{mediumTotalPrice:0.00,med:0,mediumtotalqty:0,largeTotalPrice:0.00,lag:0,largetotalqty:0,smallTotalPrice:0.00,sml:0,smalltotalqty:0,totalPrice:0.00,cartTotalPrice:0.00,totalqty:0,title:0}">
         <div>
             <h1>Perfect Pizza</h1>
         </div>
         <div class="cartTotal ">
             <strong>Total price</strong>
-            <span x-text="cartTotalPrice" class="cartTotalPrice">0.00</span>
+            <span x-text="cartTotalPrice.toFixed(2)" class="cartTotalPrice">0.00</span>
             <a href="#">
                 <img src="shopping-cart.png" alt="">
             </a>
@@ -31,25 +31,45 @@
 
             <table>
                 <tr>
+
+                    <th>type</th>
+                    <th>Price</th>
+                    <th>quantity</th>
+
+                </tr>
+                <tr>
                     <td><strong>Small pizzas total:</strong></td>
-                    <td><span x-text="smallTotalPrice" class="smallTotalPrice">0.00</span></td>
+                    <td><span x-text="smallTotalPrice.toFixed(2)" class="smallTotalPrice">0.00</span></td>
+                    <td><span x-text="smalltotalqty" class="smalltotalqty">0</span></td>
+
+
                 </tr>
 
                 <tr>
                     <td><strong>Medium pizzas total:</strong></td>
-                    <td><span x-text="mediumTotalPrice" class="mediumTotalPrice">0.00</span></td>
-
+                    <td><span x-text="mediumTotalPrice.toFixed(2)" class="mediumTotalPrice">0.00</span></td>
+                    <td><span x-text="mediumtotalqty" class="mediumtotalqty">0</span></td>
                 </tr>
                 <tr>
                     <td><strong>Large pizza total:</strong></td>
-                    <td><span x-text="largeTotalPrice" class="largeTotalPrice">0.00</span></td>
+                    <td><span x-text="largeTotalPrice.toFixed(2)" class="largeTotalPrice">0.00</span></td>
+                    <td><span x-text="largetotalqty" class="largetotalqty">0</span></td>
+
                 </tr>
                 <tr>
                     <td><strong>Total price</strong></td>
-                    <td><span x-text="totalPrice" class="totalPrice">0.00</span></td>
+                    <td><span x-text="totalPrice.toFixed(2)" class="totalPrice">0.00</span></td>
+                    <td><span x-text="totalqty" class="totalqty">0</span></td>
+
                 </tr>
+
             </table>
+            <div>
+                <p x-text="title"></p>
+                <button @click="title='Your Order has been added!' ">Order</button>
+            </div>
         </div>
+
         <div class="specials">
             <div class="medium">
                 <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg" alt="">
@@ -63,8 +83,8 @@
                 <div>
                     <h2 x-text="med">
                     </h2>
-                    <button @click="med++,mediumTotalPrice+=78.99,totalPrice+=78.99,cartTotalPrice+=78.99">+</button>
-                    <button @click="med--,mediumTotalPrice-=78.99,totalPrice-=78.99,cartTotalPrice-=78.99">-</button>
+                    <button @click="med++,mediumTotalPrice+=78.99,totalPrice+=78.99,cartTotalPrice+=78.99,mediumtotalqty+=1,totalqty+=1">+</button>
+                    <button @click="med--,mediumTotalPrice-=78.99,totalPrice-=78.99,cartTotalPrice-=78.99,mediumtotalqty-=1,totalqty-=1">-</button>
                 </div>
 
             </div>
@@ -80,8 +100,8 @@
                 <div>
                     <h2 x-text="lag">
                     </h2>
-                    <button @click="lag++,largeTotalPrice+=114.99,totalPrice+=114.99,cartTotalPrice+=114.99">+</button>
-                    <button @click="lag--,largeTotalPrice-=114.99,totalPrice-=114.99,cartTotalPrice-=114.99">-</button>
+                    <button @click="lag++,largeTotalPrice+=114.99,totalPrice+=114.99,cartTotalPrice+=114.99,largetotalqty+=1,totalqty+=1">+</button>
+                    <button @click="lag--,largeTotalPrice-=114.99,totalPrice-=114.99,cartTotalPrice-=114.99,largetotalqty-=1,totalqty-=1">-</button>
 
                 </div>
                 <!-- <div>
@@ -103,8 +123,8 @@
                 <div>
                     <h2 x-text="sml">
                     </h2>
-                    <button @click="sml++,smallTotalPrice+=48.99,totalPrice+=48.99,cartTotalPrice+=48.99">+</button>
-                    <button @click="sml--,smallTotalPrice-=48.99,totalPrice-=48.99,cartTotalPrice-=48.99">-</button>
+                    <button @click="sml++,smallTotalPrice+=48.99,totalPrice+=48.99,cartTotalPrice+=48.99,smalltotalqty+=1,totalqty+=1">+</button>
+                    <button @click="sml--,smallTotalPrice-=48.99,totalPrice-=48.99,cartTotalPrice-=48.99,smalltotalqty-=1,totalqty-=1">-</button>
                 </div>
                 <!-- <div>
                     <p x-text="title"></p>
