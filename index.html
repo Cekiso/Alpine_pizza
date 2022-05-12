@@ -13,7 +13,7 @@
 <body>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-    <div x-data="{mediumTotalPrice:0.00,mediumtotalqty:0,med:0,largeTotalPrice:0.00,largetotalqty:0,lag:0,smallTotalPrice:0.00,smalltotalqty:0,sml:0,totalPrice:0.00,cartTotalPrice:0.00,totalqty:0,checkout:0,show: false,medium: false,large:false,small:false,open:false,payment:0,change:0}">
+    <div x-data="{mediumTotalPrice:0.00,mediumtotalqty:0,med:0,largeTotalPrice:0.00,largetotalqty:0,lag:0,smallTotalPrice:0.00,smalltotalqty:0,sml:0,totalPrice:0.00,cartTotalPrice:0.00,totalqty:0,checkout:0,show: false,medium: false,large:false,small:false,open:false,payment:0,change:0,title:'Thank for shoping with us'}">
         <div>
             <h1>Perfect Pizza</h1>
         </div>
@@ -101,15 +101,17 @@
                 <br> R <span x-text="cartTotalPrice.toFixed(2)" class="cartTotalPrice">0.00</span>
                 <td>Please enter your payment here:
                     <input type="text" x-model="payment"></td>
+                <button @click="title='Thank for shoping with us'" onClick="window.location.reload()" ;>pay</button>
+                <!-- <p :class="title ? '' : 'hidden'" x-text="title"></p> -->
                 <template x-if="payment < 0 ">
-                        <p class="insufficient">please enter a valid payment</p>
+                        <p class="insufficient ">please enter a valid payment</p>
                        </template>
-                <template x-if="payment < totalPrice">
-                        <p class="insufficient">insufficient funds</p>
+                <template x-if="payment < totalPrice ">
+                        <p class="insufficient ">insufficient funds</p>
                        </template>
-                <template x-if="payment > totalPrice">
-                           <p class="sufficient">Sufficient funds your change is R<span x-text="change=(payment-totalPrice).toFixed(2)"></span></p>
-                          </template>
+                <template x-if="payment> totalPrice">
+                <p class="sufficient">Sufficient funds your change is R<span x-text="change=(payment-totalPrice).toFixed(2)"></span></p>
+                </template>
                 <template x-if="payment == totalPrice">
                             <p class="sufficient">Sufficient funds</p>
                            </template>
