@@ -13,13 +13,13 @@
 <body>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 
-    <div x-data="{mediumTotalPrice:0.00,mediumtotalqty:0,med:0,largeTotalPrice:0.00,largetotalqty:0,lag:0,smallTotalPrice:0.00,smalltotalqty:0,sml:0,totalPrice:0.00,cartTotalPrice:0.00,totalqty:0,checkout:0,show: false,medium: false,large:false,small:false}">
+    <div x-data="{mediumTotalPrice:0.00,mediumtotalqty:0,med:0,largeTotalPrice:0.00,largetotalqty:0,lag:0,smallTotalPrice:0.00,smalltotalqty:0,sml:0,totalPrice:0.00,cartTotalPrice:0.00,totalqty:0,checkout:0,show: false,medium: false,large:false,small:false,open:false,payment:0,change:0}">
         <div>
             <h1>Perfect Pizza</h1>
         </div>
         <div class="cartTotal ">
-            <strong>Total price</strong>
-            <span x-text="cartTotalPrice.toFixed(2)" class="cartTotalPrice">R0.00</span>
+            <strong>Total price</strong>R
+            <span x-text="cartTotalPrice.toFixed(2)" class="cartTotalPrice">0.00</span>
             <a href="#">
                 <img src="shopping-cart.png" alt="">
             </a>
@@ -82,7 +82,7 @@
                     </tr>
                     <tr>
                         <td><strong>Total price</strong></td>
-                        <td><span x-text="totalPrice.toFixed(2) " class="totalPrice ">0.00</span></td>
+                        <td><span x-text="totalPrice.toFixed(2) " class="totalPrice">0.00</span></td>
                         <td><span x-text="totalqty" class="totalqty">0</span></td>
 
                     </tr>
@@ -92,48 +92,27 @@
         </div>
 
 
-        <div class="cart ">
-            <h3>Shopping Cart</h3>
-            <img src="shopping-cart.png " alt=" ">
+        <div class="cart">
 
+            <button @click="open=!open">checkout</button>
 
-
-
-            <!-- <table>
-                <tr>
-
-                    <th>type</th>
-                    <th>Price</th>
-                    <th>quantity</th>
-
-                </tr>
-                <tr>
-                    <td><strong>Small pizzas total:</strong></td>
-                    <td><span x-text="smallTotalPrice.toFixed(2) " class="smallTotalPrice ">0.00</span></td>
-                    <td><span x-text="smalltotalqty " class="smalltotalqty ">0</span></td>
-
-
-                </tr>
-
-                <tr>
-                    <td><strong>Medium pizzas total:</strong></td>
-                    <td><span x-text="mediumTotalPrice.toFixed(2) " class="mediumTotalPrice ">0.00</span></td>
-                    <td><span x-text="mediumtotalqty " class="mediumtotalqty ">0</span></td>
-                </tr>
-                <tr>
-                    <td><strong>Large pizza total:</strong></td>
-                    <td><span x-text="largeTotalPrice.toFixed(2) " class="largeTotalPrice ">0.00</span></td>
-                    <td><span x-text="largetotalqty " class="largetotalqty ">0</span></td>
-
-                </tr>
-                <tr>
-                    <td><strong>Total price</strong></td>
-                    <td><span x-text="totalPrice.toFixed(2) " class="totalPrice ">0.00</span></td>
-                    <td><span x-text="totalqty " class="totalqty ">0</span></td>
-
-                </tr>
-
-            </table> -->
+            <div x-show="open">
+                <br> R <span x-text="cartTotalPrice.toFixed(2)" class="cartTotalPrice">0.00</span>
+                <td>Please enter your payment here:
+                    <input type="text" x-model="payment"></td>
+                <template x-if="payment < 0 ">
+                        <p class="insufficient">please enter a valid payment</p>
+                       </template>
+                <template x-if="payment < totalPrice">
+                        <p class="insufficient">insufficient funds</p>
+                       </template>
+                <template x-if="payment > totalPrice">
+                           <p class="insufficient">Sufficient funds your change is R<span x-text="change=(payment-totalPrice).toFixed(2)"></span></p>
+                          </template>
+                <template x-if="payment == totalPrice">
+                            <p class="insufficient">Sufficient funds</p>
+                           </template>
+            </div>
 
         </div>
 
